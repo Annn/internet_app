@@ -1,0 +1,33 @@
+<!-- produkty.ejs -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>EJS Engine</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <td><b>Nazwa produktu</b></td>
+            <td><b>Cena[zł]</b></td>
+            <td colspan="2"><b></b></td>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < itms.length; i++) { %>
+          <tr>
+            <td><%= itms[i].name %></td>
+            <td><%= itms[i].price %></td>
+            <td><a href="/produkty/edit/<%= itms[i]._id %>" class="btn btn-primary">Edytuj</a></td>
+            <td><a href="/produkty/delete/<%= itms[i]._id %>" class="btn btn-danger">Usuń</a></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
