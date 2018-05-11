@@ -31,8 +31,8 @@ app.use('/produkty', ProductRouter);
 
 
 app.get('/', function (req, res) {
-   res.sendFile(path.join(__dirname,'public', 'index.html'));
-  //res.render('index');
+//   res.sendFile(path.join(__dirname,'public', 'index.html'));
+  res.render('index');
 });
 
 //ProductRouter.route('/').get(function (req, res) {

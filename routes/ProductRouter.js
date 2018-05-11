@@ -6,7 +6,7 @@ var ProductRouter = express.Router();
 var Item = require('../models/Item');
 
 //ProductRouter.route('/').get(function (req, res) {
-  //res.render('index');
+//  res.render('index');
 //});
 
 ProductRouter.route('/').get(function (req, res) {
