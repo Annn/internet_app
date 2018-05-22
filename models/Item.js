@@ -4,13 +4,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Item = new Schema({
-  name: {
-    type: String
-  },
-  price: {
-    type: Number
-  }
-},{
+    name: {
+        type: String
+    },
+    price: {
+        type: Number
+    }
+},
+                      {
     collection: 'items'
 });
 
