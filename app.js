@@ -8,6 +8,7 @@ var path = require('path');
 var ProductRouter = require('./routes/ProductRouter');
 //var ProductRouter = express.Router();
 var userRouter = require('./routes/userRouter');
+var requestRouter = require('./routes/requestRouter');
 
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
@@ -36,6 +37,10 @@ app.use('/produkty', ProductRouter);
 app.use('/register', userRouter);
 app.use('/login', userRouter);
 
+// Requests
+app.use('/requests', requestRouter);
+
+
 app.get('/', function (req, res) {
 //   res.sendFile(path.join(__dirname,'public', 'index.html'));
   res.render('index');
@@ -51,6 +56,10 @@ app.get('/register', function (req, res) {
 
 app.get('/login', function (req, res) {
     res.render('login');
+});
+
+app.get('/requests', function (req, res) {
+    res.render('requests');
 });
 
 app.listen(port, function(){

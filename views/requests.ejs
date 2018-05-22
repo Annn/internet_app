@@ -1,0 +1,38 @@
+<!-- requests.ejs -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>EJS Engine</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            
+            <div class="row text-center">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Weight</th>
+                            <th scope="col">Place</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0; i < itms.length; i++) { %>
+                            <tr>
+                            <td><%= itms[i].name %></td>
+                            <td><%= itms[i].price %></td>
+                            <td><a href="/produkty/edit/<%= itms[i]._id %>" class="btn btn-primary">Edytuj</a></td>
+                            <td><a href="/produkty/delete/<%= itms[i]._id %>" class="btn btn-danger">Usuń</a></td>
+                          </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+    </body>
+</html>
