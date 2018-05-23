@@ -19,12 +19,12 @@
         </thead>
         <tbody>
           <% for(var i=0; i < itms.length; i++) { %>
-          <tr>
-            <td><%= itms[i].name %></td>
-            <td><%= itms[i].price %></td>
-            <td><a href="/produkty/edit/<%= itms[i]._id %>" class="btn btn-primary">Edytuj</a></td>
-            <td><a href="/produkty/delete/<%= itms[i]._id %>" class="btn btn-danger">Usuń</a></td>
-          </tr>
+            <tr>
+              <td><%= itms[i].name %></td>
+              <td><%= itms[i].price %></td>
+              <td><a href="/produkty/edit/<%= itms[i]._id %>" class="btn btn-primary">Edytuj</a></td>
+              <td><a href="/produkty/delete/<%= itms[i]._id %>" class="btn btn-danger">Usuń</a></td>
+            </tr>
           <% } %>
         </tbody>
       </table>
