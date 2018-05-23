@@ -14,19 +14,23 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Weight</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Weight [kg]</th>
                             <th scope="col">Place</th>
+                            <th scope="col">Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% for(var i=0; i < itms.length; i++) { %>
+                        <% for(var i=0; i < reqs.length; i++) { %>
                             <tr>
-                            <td><%= itms[i].name %></td>
-                            <td><%= itms[i].price %></td>
-                            <td><a href="/produkty/edit/<%= itms[i]._id %>" class="btn btn-primary">Edytuj</a></td>
-                            <td><a href="/produkty/delete/<%= itms[i]._id %>" class="btn btn-danger">Usuń</a></td>
+                                <td><%= reqs[i].date %></td>
+                                <td><%= reqs[i].description %></td>
+                                <td><%= reqs[i].weight %></td>
+                                <td><%= reqs[i].place %></td>
+                                <td><%= reqs[i].status %></td>
+                                <td><a href="/requests/edit/<%= reqs[i]._id %>" class="btn btn-primary">Edit</a></td>
+                                <td><a href="/requests/delete/<%= reqs[i]._id %>" class="btn btn-danger">Delete</a></td>
                           </tr>
                         <% } %>
                     </tbody>
