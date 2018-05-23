@@ -26,6 +26,7 @@ mongoose.connect('mongodb://user:user@ds219040.mlab.com:19040/cbp')
         process.exit(1);
     });
 
+//app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
