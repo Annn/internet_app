@@ -10,12 +10,12 @@ var request = require('../models/request');
 //});
 
 requestRouter.route('/').get(function (req, res) {
-  request.find(function (err, itms){
+  request.find(function (err, reqs){
     if (err) {
       console.log(err);
     }
     else {
-      res.render('requests', {itms: itms});
+      res.render('requests', {reqs: reqs});
     }
   });
 });
@@ -27,7 +27,7 @@ requestRouter.route('/add').get(function (req, res) {
 requestRouter.route('/add/post').post(function (req, res) {
   var request = new request(req.body);
       request.save()
-    .then(item => {
+    .then(request => {
     res.redirect('/requests');
     })
     .catch(err => {
@@ -38,7 +38,7 @@ requestRouter.route('/add/post').post(function (req, res) {
 requestRouter.route('/edit/:id').get(function (req, res) {
   var id = req.params.id;
   request.findById(id, function (err, item){
-      res.render('edytujProdukt', {item: item});
+      res.render('editRequest', {item: item});
   });
 });
 

@@ -3,9 +3,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var Request = new Schema({
+var requestSchema = new Schema({
     date: {
-        type: Date
+        type: Date,
+        default: Date.now
     },
     description: {
         type: String,
@@ -19,14 +20,14 @@ var Request = new Schema({
         required: true
     },
     status: {
-        type: Boolean,
-        required: true
+        type: Boolean
     }
 },
                       {
     collection: 'requests'
 });
 
-// The first argument is the singular name of the collection your model is for. Mongoose automatically looks for the plural version of your model name.
+//mongoose.model(modelName, schema) 
+//The first argument is the singular name of the collection your model is for. Mongoose automatically looks for the plural version of your model name.
 
-module.exports = mongoose.model('request', Request);
+var Request = module.exports = mongoose.model('Request', requestSchema);

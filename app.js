@@ -64,6 +64,10 @@ app.get('/requests', function (req, res) {
     res.render('requests');
 });
 
+app.get('/add', function (req, res) {
+    res.render('newrequest');
+});
+
 app.listen(port, function(){
   console.log('CargoBikePortal started on port', port);
 });
