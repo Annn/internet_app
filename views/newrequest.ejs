@@ -2,16 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Dodawanie produktu</title>
+    <title>Add request</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
   </head>
   <body>
     <div class="container">
-        <h1>Dodaj produkt</h1>
-        <form method="post" action="/produkty/utworz/post">
+        <h1>Add a request to be delivered</h1>
+        <form method="post" action="/requests/add/post">
           <div class="form-group">
             <label for="item">Nazwa produktu</label>
             <input type="text" class="form-control" id="name" name="name">
+          </div>
+          <div class="form-group">
+            <label for="item">Cena produktu</label>
+            <input type="text" class="form-control" id="price" name="price">
           </div>
           <div class="form-group">
             <label for="item">Cena produktu</label>

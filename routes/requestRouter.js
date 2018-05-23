@@ -11,7 +11,7 @@ var request = require('../models/request');
 
 requestRouter.route('/').get(function (req, res) {
   request.find(function (err, itms){
-    if(err){
+    if (err) {
       console.log(err);
     }
     else {
@@ -20,18 +20,18 @@ requestRouter.route('/').get(function (req, res) {
   });
 });
 
-requestRouter.route('/utworz').get(function (req, res) {
-   res.render('utworz');
+requestRouter.route('/add').get(function (req, res) {
+   res.render('newrequest');
  });
 
-requestRouter.route('/utworz/post').post(function (req, res) {
+requestRouter.route('/add/post').post(function (req, res) {
   var request = new request(req.body);
       request.save()
     .then(item => {
     res.redirect('/requests');
     })
     .catch(err => {
-    res.status(400).send("unable to save to database");
+    res.status(400).send("Unable to save to database");
     });
 });
 
@@ -45,16 +45,15 @@ requestRouter.route('/edit/:id').get(function (req, res) {
 requestRouter.route('/update/:id').post(function (req, res) {
    request.findById(req.params.id, function(err, item) {
      if (!item)
-       return next(new Error('Blad zaladowania'));
+       return next(new Error('Error while loading the request data.'));
      else {
        item.name = req.body.name;
        item.price = req.body.price;
- 
        item.save().then(item => {
            res.redirect('/requests');
        })
        .catch(err => {
-             res.status(400).send("Blad aktualizacji.");
+             res.status(400).send("Update error!");
        });
      }
    });
