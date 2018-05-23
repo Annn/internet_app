@@ -694,5 +694,11 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 }
 
 #map {
-    height: 100%;
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+#citymap {
+    
 }
