@@ -8,10 +8,10 @@ var Consignment = require('../models/Consignment');
 consignmentRouter.route('/').get(function (req, res) {
   Consignment.find(function (err, consignments){
     if (err) {
-      console.log("!!!", err);
+      console.log(err);
     }
     else {
-      res.render('list', {consignments: consignments});
+      res.render('index', {consignments: consignments});
     }
   });
 });
@@ -20,15 +20,15 @@ consignmentRouter.route('/add').get(function (req, res) {
    res.render('newConsignment');
  });
 
-consignmentRouter.route('/add/post').post(function (req, res) {
+consignmentRouter.route('/add/post').post((req, res) => {
   var consignment = new Consignment(req.body);
-    consignment.save()
-      .then(consignment => {
-        res.redirect('/list');
-      })
-      .catch(err => {
-        res.status(400).send("Unable to save to database");
-    });
+  consignment.save()
+  .then(consignment => {
+    res.redirect('/');
+  })
+  .catch(err => {
+    res.status(400).send("Unable to save to database");
+  });
 });
 
 consignmentRouter.route('/edit/:id').get(function (req, res) {
@@ -43,19 +43,19 @@ consignmentRouter.route('/update/:id').post(function (req, res) {
     if (!consignment)
       return next(new Error('Error while loading the consignment data.'));
     else {
-      consignment.name = req.body.description;
-      consignment.price = req.body.price;
+      consignment.desription = req.body.description;
+      consignment.weight = req.body.weight;
       // ....
-       consignment.save()
-       .then(item => {
-           res.redirect('/list');
-       })
-       .catch(err => {
+      consignment.save()
+      .then(item => {
+        res.redirect('/');
+      })
+      .catch(err => {
          res.status(400).send("Update error!");
-       });
-     }
-   });
- });
+      });
+    }
+  });
+});
 
 consignmentRouter.route('/delete/:id').get(function (req, res) {
   Consignment.findByIdAndRemove({_id: req.params.id},
@@ -63,7 +63,7 @@ consignmentRouter.route('/delete/:id').get(function (req, res) {
       if (err)
         res.json(err);
       else
-        res.redirect('/list');
+        res.redirect('/');
     });
 });
 
