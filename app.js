@@ -34,6 +34,7 @@ app.use('/login', userRouter);
 
 // Consignments
 app.use('/', consignmentRouter);
+app.use('/list', consignmentRouter);
 
 app.get('/', function (req, res) {
   res.render('index');
@@ -45,10 +46,6 @@ app.get('/register', function (req, res) {
 
 app.get('/login', function (req, res) {
     res.render('login');
-});
-
-app.get('/list', function (req, res) {
-    res.render('list');
 });
 
 app.get('/add', (req, res) => {

@@ -18,7 +18,19 @@ consignmentRouter.route('/').get(function (req, res) {
 
 consignmentRouter.route('/add').get(function (req, res) {
    res.render('newConsignment');
- });
+});
+
+consignmentRouter.route('/list').get(function (req, res) {
+    Consignment.find(function (err, consignments){
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.render('list', {consignments: consignments});
+    }
+  });
+});
+
 
 consignmentRouter.route('/add/post').post((req, res) => {
   var consignment = new Consignment(req.body);
