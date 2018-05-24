@@ -33,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav text-uppercase ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#requests">Requests</a>
+                  <a class="nav-link js-scroll-trigger" href="#consignments">Consignments</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link js-scroll-trigger" href="#citymap">City map</a>
@@ -63,8 +63,8 @@
           </div>
         </header>
 
-        <!-- Requests -->
-        <section id="requests">
+        <!-- Consignments -->
+        <section id="consignments">
           <div class="container">
             <div class="row">
               <div class="col-lg-12 text-center">
@@ -232,32 +232,32 @@
         <!-- Google Map -->
         <script>
             var map;
-            function initMap() { 
+            function initMap() {
                 var myLatLng = {lat: 50.057517, lng: 19.938382};
-                
+
                 map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 50.061769, lng: 19.939370},
                 zoom: 15
                 });
-                
+
                 google.maps.event.addListener(map, 'click', function(event) {
                     placeMarker(event.latLng);
                 });
-                
+
                 function placeMarker(location) {
                     var marker = new google.maps.Marker({
-                        position: location, 
+                        position: location,
                         map: map
                     });
                 }
-                
+
                 /* var marker = new google.maps.Marker({
                     position: myLatLng,
                     map: map,
                     title: 'Tanie książki!!'
                  }); */
             }
-            
+
         </script>
         <script async defer
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjA3XDzwn8tSOxPpEWruNQfP9AFrSBXZc&callback=initMap">

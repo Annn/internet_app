@@ -1,0 +1,41 @@
+<!-- list.ejs -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Consignments List</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row text-center">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Weight [kg]</th>
+              <th scope="col">X</th>
+              <th scope="col">Y</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i = 0; i < consignments.length; i++) { %>
+              <tr>
+                <td><%= consignments[i].description %></td>
+                <td><%= reqs[i].weight %></td>
+                <td><%= reqs[i].x %></td>
+                <td><%= reqs[i].y %></td>
+                <td><%= reqs[i].status %></td>
+                <td><a href="/consignments/edit/<%= reqs[i]._id %>" class="btn btn-primary">Edit</a></td>
+                <td><a href="/consignments/delete/<%= reqs[i]._id %>" class="btn btn-danger">Delete</a></td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
