@@ -31,6 +31,7 @@ app.use(bodyParser.json());
 // Users
 app.use('/register', userRouter);
 app.use('/login', userRouter);
+app.use('/userpage', userRouter);
 
 // Consignments
 app.use('/', consignmentRouter);
@@ -48,7 +49,11 @@ app.get('/login', function (req, res) {
     res.render('login');
 });
 
-app.get('/add', (req, res) => {
+app.get('/userpage', function (req, res) {
+    res.render('userpage');
+});
+
+app.get('/add/newConsignment', (req, res) => {
     res.render('newConsignment');
 });
 

@@ -14,6 +14,10 @@ userRouter.route('/login').get(function (req, res) {
     res.render('login');
 });
 
+userRouter.route('/userpage').get(function (req, res) {
+    res.render('userpage');
+});
+
 userRouter.route('/register/post').post(function (req, res) {
     var user = new User(req.body);
     user.save()

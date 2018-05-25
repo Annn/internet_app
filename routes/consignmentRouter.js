@@ -16,7 +16,7 @@ consignmentRouter.route('/').get(function (req, res) {
   });
 });
 
-consignmentRouter.route('/add').get(function (req, res) {
+consignmentRouter.route('/add/newConsignment').get(function (req, res) {
    res.render('newConsignment');
 });
 
