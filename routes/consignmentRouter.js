@@ -5,8 +5,8 @@ var app = express();
 var consignmentRouter = express.Router();
 var Consignment = require('../models/Consignment');
 
-consignmentRouter.route('/').get(function (req, res) {
-  Consignment.find(function (err, consignments){
+consignmentRouter.route('/').get((req, res) => {
+  Consignment.find((err, consignments) => {
     if (err) {
       console.log(err);
     }
@@ -16,12 +16,12 @@ consignmentRouter.route('/').get(function (req, res) {
   });
 });
 
-consignmentRouter.route('/add/newConsignment').get(function (req, res) {
+consignmentRouter.route('/add').get((req, res) => {
    res.render('newConsignment');
 });
 
-consignmentRouter.route('/list').get(function (req, res) {
-    Consignment.find(function (err, consignments){
+consignmentRouter.route('/list').get((req, res) => {
+    Consignment.find((err, consignments) => {
     if (err) {
       console.log(err);
     }
@@ -30,7 +30,6 @@ consignmentRouter.route('/list').get(function (req, res) {
     }
   });
 });
-
 
 consignmentRouter.route('/add/post').post((req, res) => {
   var consignment = new Consignment(req.body);
@@ -43,15 +42,15 @@ consignmentRouter.route('/add/post').post((req, res) => {
   });
 });
 
-consignmentRouter.route('/edit/:id').get(function (req, res) {
+consignmentRouter.route('/edit/:id').get((req, res) => {
   var id = req.params.id;
-  Consignment.findById(id, function (err, consignment){
+  Consignment.findById(id, (err, consignment) => {
       res.render('editConsignment', {consignment: consignment});
   });
 });
 
-consignmentRouter.route('/update/:id').post(function (req, res) {
-  Consignment.findById(req.params.id, function(err, consignment) {
+consignmentRouter.route('/update/:id').post((req, res) => {
+  Consignment.findById(req.params.id, (err, consignment) => {
     if (!consignment)
       return next(new Error('Error while loading the consignment data.'));
     else {
@@ -69,7 +68,7 @@ consignmentRouter.route('/update/:id').post(function (req, res) {
   });
 });
 
-consignmentRouter.route('/delete/:id').get(function (req, res) {
+consignmentRouter.route('/delete/:id').get((req, res) => {
   Consignment.findByIdAndRemove({_id: req.params.id},
     function(err, consignment){
       if (err)

@@ -42,10 +42,10 @@
                   <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="/register">Register</a>
+                  <a class="nav-link js-scroll-trigger" href="/user/register">Register</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="/login">Log In</a>
+                  <a class="nav-link js-scroll-trigger" href="/user/login">Log In</a>
                 </li>
               </ul>
             </div>
@@ -58,7 +58,7 @@
             <div class="intro-text">
               <div class="intro-lead-in">Welcome to CargoBike Krakow!</div>
               <div class="intro-heading text-uppercase">Get your cargo to be delivered by bike</div>
-              <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#requests">Register</a>
+              <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="/user/register">Register</a>
             </div>
           </div>
         </header>
@@ -92,10 +92,8 @@
                       <td><%= consignments[i].x %></td>
                       <td><%= consignments[i].y %></td>
                       <td><%= consignments[i].status %></td>
-<!--
-                      <td><a href="/edit/<%= consignments[i]._id %>" class="btn btn-primary">Edit</a></td>
-                      <td><a href="/delete/<%= consignments[i]._id %>" class="btn btn-danger">Delete</a></td>
--->
+                      <!-- <td><a href="/edit/<%= consignments[i]._id %>" class="btn btn-primary">Edit</a></td>
+                      <td><a href="/delete/<%= consignments[i]._id %>" class="btn btn-danger">Delete</a></td> -->
                     </tr>
                   <% } %>
                 </tbody>
@@ -122,7 +120,7 @@
             <div class="row">
               <div class="col-lg-12 text-center">
                 <h2 class="section-heading text-uppercase">Contact Us</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h3 class="section-subheading text-muted">share your opinion or suggestions</h3>
               </div>
             </div>
             <div class="row">
@@ -166,7 +164,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-4">
-                <span class="copyright">Copyright &copy; Your Website 2018</span>
+                <span class="copyright">Copyright &copy; Cargo Bikes Krakow 2018</span>
               </div>
               <div class="col-md-4">
                 <ul class="list-inline social-buttons">

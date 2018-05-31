@@ -8,6 +8,11 @@ var Consignment = new Schema({
         type: Date,
         default: Date.now
     },
+    uid: {
+        type: Number,
+        required: true,
+        default: 0
+    },
     description: {
         type: String,
         required: true
@@ -24,9 +29,10 @@ var Consignment = new Schema({
         required: true
     },
     status: {
-        type: Boolean
+        type: Boolean,
+        default: false
     }
-},  { collection: 'requests' });
+},  { collection: 'consignments' });
 
 // mongoose.model(modelName, schema)
 // The first argument is the singular name of the collection your model is for.
