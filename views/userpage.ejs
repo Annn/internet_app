@@ -10,7 +10,7 @@
       <div class="row">
         <br>
         <div class="col-sm-10">
-          <h1 class=""><%= user.username %></h1><br>
+          <h1 class=""><%= user.name %></h1><br>
         </div>
         <div class="col-sm-2">
           <a href="/users" class="pull-right">
@@ -27,22 +27,25 @@
           <!--left col-->
           <ul class="list-group">
             <li class="list-group-item text-muted" contenteditable="false">Profile</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong class="">Joined</strong></span> 25.05.2018</li>
+            <li class="list-group-item text-right">
+              <span class="pull-left"><strong class="">Joined:</strong></span>
+              <%= user.dateJoined %>
+            </li>
             <li class="list-group-item text-right">
               <span class="pull-left">
-                <strong class="">Name</strong>
+                <strong class="">Name:</strong>
               </span>
               <%= user.username %>
             </li>
             <li class="list-group-item text-right">
               <span class="pull-left">
-                <strong class="">Email</strong>
+                <strong class="">Email:</strong>
               </span>
               <%= user.email %>
             </li>
             <li class="list-group-item text-right">
               <span class="pull-left">
-                <strong class="">Role: </strong>
+                <strong class="">Role:</strong>
               </span>
               <%= user.type %>
             </li>
@@ -53,7 +56,7 @@
 
         <div class="col-sm-9" style="" contenteditable="false">
           <div class="panel panel-default">
-            <div class="panel-heading">User Tasks</div>
+            <div class="panel-heading">User Requests</div>
               <div class="panel-body">
                 <div class="row text-center">
                   <table class="table table-striped ">
@@ -67,21 +70,38 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td></td>
-                      </tr>
-                    </tbody>
+                      <% for(var i = 0; i < consignments.length; i++) { %>
+                        <% if (consignments[i].uid == user._id) { %>
+                          <tr>
+                            <td><%= consignments[i].description %></td>
+                            <td><%= consignments[i].weight %></td>
+                            <td><%= consignments[i].x %></td>
+                            <td><%= consignments[i].y %></td>
+                            <td><%= consignments[i].status %></td>
+                            <td>
+                              <a href="/user/<%= user._id %>/edit/<%= consignments[i]._id %>" class="btn btn-primary">
+                                Edit
+                              </a>
+                            </td>
+                            <td>
+                              <a href="/user/<%= user._id %>/delete/<%= consignments[i]._id %>" class="btn btn-danger">
+                                Delete
+                              </a>
+                            </td>
+                          </tr>
+                        <% } %>
+                      <% } %>
                   </table>
                 </div>
               </div> <!-- panel body -->
             </div>
             <div>
-              <p>You do not have any tasks, please, add the consignment!</p>
-              <a href="/add/newConsignment" class="btn btn-lg btn-primary">Add Task</a>
+              <!-- <p>You do not have any tasks, please, add the consignment!</p> -->
+              <a href="/user/<%= user._id %>/add" class="btn btn-lg btn-primary">New Request</a>
             </div>
           </div>
         </div>
-        <br>
+        <!-- <br>
         <div class="row">
           <div class="col-sm-3">
             <div class="panel panel-default">
@@ -91,7 +111,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
     </div> <!-- container -->
   </body>
 </html>

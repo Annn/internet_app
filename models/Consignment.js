@@ -9,7 +9,7 @@ var Consignment = new Schema({
         default: Date.now
     },
     uid: {
-        type: Number,
+        type: String,
         required: true,
         default: 0
     },

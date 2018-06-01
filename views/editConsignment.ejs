@@ -11,14 +11,24 @@
   <body>
     <div class="container">
       <h1>Edit the consignment data</h1>
-      <form method="post" action="/update/<%= consignment._id %>">
+      <form method="post" action="/user/<%= uid %>/update/<%= consignment._id %>">
         <div class="form-group">
           <label for="consignment">Description</label>
-          <input type="text" class="form-control" id="description" name="description" value="<%= consignment.description %>">
+          <input type="text" class="form-control"
+                 id="description" name="description"
+                 value="<%= consignment.description %>">
         </div>
         <div class="form-group">
           <label for="consignment">Weight [kg]</label>
           <input type="text" class="form-control" id="weight" name="weight" value="<%= consignment.weight %>">
+        </div>
+        <div class="form-group">
+          <label for="consignment">Coordinate X</label>
+          <input type="number" class="form-control" id="x" name="x" value="<%= consignment.x %>">
+        </div>
+        <div class="form-group">
+          <label for="consignment">Coordinate Y</label>
+          <input type="number" class="form-control" id="y" name="y" value="<%= consignment.y %>">
         </div>
         <button type="submit" class="btn btn-default">Save</button>
       </form>

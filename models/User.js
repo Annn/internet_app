@@ -5,6 +5,11 @@ const Schema = mongoose.Schema;
 
 // User schema
 const UserSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true
+  },
   username: {
     type: String,
     unique: true,
@@ -25,9 +30,9 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  passConfirm: {
-    type: String,
-    required: true
+  dateJoined: {
+    type: Date,
+    default: Date.now
   }
 }, { collection: 'users' });
 
