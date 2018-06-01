@@ -702,3 +702,10 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 #citymap {
     
 }
+
+img.avatar,
+div.avatar {
+  border: 1px solid #eee;
+  width: 122px;
+  height: 122px;
+}

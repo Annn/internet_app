@@ -48,3 +48,32 @@
   })
 
 })(jQuery); // End of use strict
+
+// Google map
+
+//var map;
+//function initMap() {
+//    var myLatLng = {lat: 50.057517, lng: 19.938382};
+//
+//    map = new google.maps.Map(document.getElementById('map'), {
+//    center: {lat: 50.061769, lng: 19.939370},
+//    zoom: 15
+//    });
+//
+//    google.maps.event.addListener(map, 'click', function(event) {
+//        placeMarker(event.latLng);
+//    });
+//
+//    function placeMarker(location) {
+//        var marker = new google.maps.Marker({
+//            position: location,
+//            map: map
+//        });
+//    }
+//
+//    /* var marker = new google.maps.Marker({
+//        position: myLatLng,
+//        map: map,
+//        title: 'Tanie książki!!'
+//     }); */
+//}

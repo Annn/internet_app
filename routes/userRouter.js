@@ -52,6 +52,12 @@ userRouter.route('/:uid/add').get((req, res) => {
   res.render('newConsignment');
 });
 
+// render editUserProfile page
+userRouter.route('/:uid/editUserProfile').get((req, res) => {
+  // var uid = req.params.uid;
+  res.render('editUserProfile');
+});
+
 userRouter.route('/:uid/add/post').post((req, res) => {
   var uid = req.params.uid;
   var consignment = new Consignment(req.body);
