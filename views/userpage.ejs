@@ -28,12 +28,8 @@
           <ul class="list-group">
             <li class="list-group-item text-muted" contenteditable="false">Profile</li>
             <li class="list-group-item text-right">
-              <span class="pull-left"><strong class="">Joined:</strong></span>
-              <%= user.dateJoined %>
-            </li>
-            <li class="list-group-item text-right">
               <span class="pull-left">
-                <strong class="">Name:</strong>
+                <strong class="">User Name:</strong>
               </span>
               <%= user.username %>
             </li>
@@ -48,6 +44,10 @@
                 <strong class="">Role:</strong>
               </span>
               <%= user.type %>
+            </li>
+            <li class="list-group-item text-right">
+              <span class="pull-left"><strong class="">Joined:</strong></span>
+              <%= user.dateJoined %>
             </li>
           </ul>
 

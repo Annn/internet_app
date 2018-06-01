@@ -59,7 +59,7 @@ const UserSchema = new Schema({
 //     }
 
 //hashing a password before saving it to the database
-UserSchema.pre('save', function(next) { //!!! don't touch function
+UserSchema.pre('save', function(next) { //!!! don't touch 'function'
   var user = this;
   bcrypt.hash(user.password, 10, (err, hash) => {
     if (err) {
