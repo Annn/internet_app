@@ -60,9 +60,12 @@
   </div> <!-- container -->
   </body>
 
+  <script></script>
   <!-- Google Map -->
   <script>
     var map;
+    var markers = [];
+
     function initMap() {
       var myLatLng = {lat: 50.057517, lng: 19.938382};
 
@@ -70,15 +73,31 @@
         center: {lat: 50.061769, lng: 19.939370},
         zoom: 15
       });
-      google.maps.event.addListener(map, 'click', function(event) {
+
+      google.maps.event.addListener(map, "click", function (event) {
+        var latitude = event.latLng.lat();
+        var longitude = event.latLng.lng();
+        console.log( latitude + ', ' + longitude );
+        deleteMarkers(); // delete previous marker(s)
         placeMarker(event.latLng);
+        // Center the map
+        map.panTo(new google.maps.LatLng(latitude, longitude));
+
       });
+
+      function deleteMarkers() {
+        for (var i = 0; i < markers.length; i++ ) {
+          markers[i].setMap(null);
+        }
+        markers = [];
+      }
 
       function placeMarker(location) {
         var marker = new google.maps.Marker({
           position: location,
           map: map
         });
+        markers.push(marker);
       }
     }
   </script>
