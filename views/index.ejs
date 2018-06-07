@@ -63,8 +63,8 @@
           </div>
         </header>
 
-        <!-- Consignments -->
-        <section id="consignments">
+        <!-- Consignments Table-->
+        <section id="consignmentsTable">
           <div class="container">
             <div class="row">
               <div class="col-lg-12 text-center">
@@ -79,8 +79,8 @@
                   <tr>
                     <th scope="col">Description</th>
                     <th scope="col">Weight [kg]</th>
-                    <th scope="col">X</th>
-                    <th scope="col">Y</th>
+                    <th scope="col">Latitude</th>
+                    <th scope="col">Longitude</th>
                     <th scope="col">Status</th>
                   </tr>
                 </thead>
@@ -88,9 +88,9 @@
                   <% for(var i = 0; i < consignments.length; i++) { %>
                     <tr>
                       <td><%= consignments[i].description %></td>
-                      <td><%= consignments[i].weight %></td>
-                      <td><%= consignments[i].x %></td>
-                      <td><%= consignments[i].y %></td>
+                      <td class="weight"><%= consignments[i].weight %></td>
+                      <td class="lat"><%= consignments[i].lat %></td>
+                      <td class="lng"><%= consignments[i].lng %></td>
                       <td><%= consignments[i].status %></td>
                     </tr>
                   <% } %>
@@ -102,13 +102,14 @@
 
         <!-- Map -->
         <section id="citymap">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2 class="section-heading text-uppercase">Krakow City Map</h2>
-                    </div>
-                    <div class="col-lg-12" id="map" width="100%" height="100%"></div>
-                </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase">Krakow City Map</h2>
+              </div>
+              <div class="col-lg-12" id="map" width="100%" height="100%">
+              </div>
+            </div>
           </div>
         </section>
 
@@ -223,33 +224,33 @@
 
     <!-- Google Map -->
     <script>
-        var map;
-        function initMap() {
-            var myLatLng = {lat: 50.057517, lng: 19.938382};
+      var map;
+      var latTD = $(".lat"), lngTD = $(".lng"), wTD = $(".weight");
+      var ms = [];
 
-            map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 50.061769, lng: 19.939370},
-            zoom: 15
-            });
+      for (var i = 0; i < latTD.length; i++) {
+        ms.push({ lat: parseFloat(latTD[i].innerText),
+                  lng: parseFloat(lngTD[i].innerText),
+                  weight: wTD[i].innerText + " kg"});
+      }
 
-            google.maps.event.addListener(map, 'click', function(event) {
-                placeMarker(event.latLng);
-            });
+      console.log(ms);
 
-            function placeMarker(location) {
-                var marker = new google.maps.Marker({
-                    position: location,
-                    map: map
-                });
-            }
+      function initMap() {
 
-            /* var marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                title: 'Tanie książki!!'
-             }); */
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 50.061769, lng: 19.939370},
+          zoom: 15
+          });
+
+        for (var i = 0; i < ms.length; i++) {
+          new google.maps.Marker({
+            position: {lat: ms[i].lat, lng: ms[i].lng},
+            map: map,
+            title: ms[i].weight
+          });
         }
-
+      }
     </script>
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjA3XDzwn8tSOxPpEWruNQfP9AFrSBXZc&callback=initMap">

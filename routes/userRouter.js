@@ -122,8 +122,8 @@ userRouter.route('/:uid/update/:id').post((req, res) => {
     else {
       consignment.description = req.body.description;
       consignment.weight = req.body.weight;
-      consignment.x = req.body.x;
-      consignment.y = req.body.y;
+      consignment.lat = req.body.lat;
+      consignment.lng = req.body.lng;
       consignment.save()
                  .then(item => {
                    res.redirect('/user/' + uid);

@@ -20,11 +20,11 @@ var ConsignmentSchema = new Schema({
     weight: {
         type: Number
     },
-    x: {
+    lat: {
         type: Number,
         required: true
     },
-    y: {
+    lng: {
         type: Number,
         required: true
     },
