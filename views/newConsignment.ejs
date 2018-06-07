@@ -22,26 +22,68 @@
   </head>
   <body>
     <div class="container">
+      <div class="col-sm-12">
       <form class="form-signin" method="post" action="add/post">
         <h2 class="form-signin-heading">Add a consignment to be delivered</h2>
-        <div class="form-group">
-          <label for="consignment">Cargo description</label>
-          <input type="text" class="form-control" id="description" name="description">
+
+        <!-- Map -->
+        <div class="col-sm-6">
+          <section id="citymap">
+            <div id="map" width="100%" height="100%">
+            </div>
+          </section>
         </div>
-        <div class="form-group">
-          <label for="consignment">Cargo weight</label>
-          <input type="text" class="form-control" id="weight" name="weight">
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="consignment">Cargo description</label>
+            <input type="text" class="form-control" id="description" name="description">
+          </div>
+          <div class="form-group">
+            <label for="consignment">Cargo weight</label>
+            <input type="text" class="form-control" id="weight" name="weight">
+          </div>
+          <div class="form-group">
+            <label for="consignment">Delivery place: X coordinate</label>
+            <input type="text" class="form-control" id="x" name="x">
+          </div>
+          <div class="form-group">
+            <label for="consignment">Delivery place: Y coordinate</label>
+            <input type="text" class="form-control" id="y" name="y">
+          </div>
         </div>
-        <div class="form-group">
-          <label for="consignment">Delivery place: X coordinate</label>
-          <input type="text" class="form-control" id="x" name="x">
-        </div>
-        <div class="form-group">
-          <label for="consignment">Delivery place: Y coordinate</label>
-          <input type="text" class="form-control" id="y" name="y">
-        </div>
-        <button type="submit" class="btn btn-primary">OK</button>
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-primary">OK</button>
+        <div class="col-sm-12">
       </form>
     </div>
+  </div> <!-- container -->
   </body>
+
+  <!-- Google Map -->
+  <script>
+    var map;
+    function initMap() {
+      var myLatLng = {lat: 50.057517, lng: 19.938382};
+
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 50.061769, lng: 19.939370},
+        zoom: 15
+      });
+      google.maps.event.addListener(map, 'click', function(event) {
+        placeMarker(event.latLng);
+      });
+
+      function placeMarker(location) {
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map
+        });
+      }
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjA3XDzwn8tSOxPpEWruNQfP9AFrSBXZc&callback=initMap">
+  </script>
+
 </html>

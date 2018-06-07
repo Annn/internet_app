@@ -15,6 +15,7 @@
     <link href="/css/agency.css" rel="stylesheet">
     <link href="/css/agency.min.css" rel="stylesheet">
   </head>
+
   <body>
 
     <div class="container">
@@ -29,109 +30,110 @@
           </a>
         </div>
       </div>
-      <br>
+    <br>
 
-      <div class="row">
-        <div class="col-sm-12">
-        </div>
-        <div class="col-sm-3">
-          <!--left col-->
-          <ul class="list-group">
-            <li class="list-group-item text-muted" contenteditable="false">Profile</li>
-            <li class="list-group-item text-right">
-              <span class="pull-left">
-                <strong class="">User Name:</strong>
-              </span>
-              <%= user.username %>
-            </li>
-            <li class="list-group-item text-right">
-              <span class="pull-left">
-                <strong class="">Email:</strong>
-              </span>
-              <%= user.email %>
-            </li>
-            <li class="list-group-item text-right">
-              <span class="pull-left">
-                <strong class="">Role:</strong>
-              </span>
-              <%= user.type %>
-            </li>
-            <li class="list-group-item text-right">
-              <span class="pull-left"><strong class="">Joined:</strong></span>
-              <%= user.dateJoined %>
-            </li>
-          </ul>
+    <div class="row">
+      <!-- <div class="col-sm-12"></div> -->
+      <div class="col-sm-3">
+        <!--left col-->
+        <ul class="list-group">
+          <li class="list-group-item text-muted" contenteditable="false">Profile</li>
+          <li class="list-group-item text-right">
+            <span class="pull-left">
+              <strong class="">User Name:</strong>
+            </span>
+            <%= user.username %>
+          </li>
+          <li class="list-group-item text-right">
+            <span class="pull-left">
+              <strong class="">Email:</strong>
+            </span>
+            <%= user.email %>
+          </li>
+          <li class="list-group-item text-right">
+            <span class="pull-left">
+              <strong class="">Role:</strong>
+            </span>
+            <%= user.type %>
+          </li>
+          <li class="list-group-item text-right">
+            <span class="pull-left"><strong class="">Joined:</strong></span>
+            <%= user.dateJoined %>
+          </li>
+        </ul>
 
-          <a href="/user/<%= user._id %>/editUserProfile"
-            class="btn btn-lg btn-primary btn-block">
-            Edit profile
-          </a>
-          <a href="/" class="btn btn-lg btn-block btn-danger">
-            Logout
-          </a>
-        </div>
+        <a href="/user/<%= user._id %>/editUserProfile"
+          class="btn btn-lg btn-primary btn-block">
+          Edit profile
+        </a>
+        <a href="/" class="btn btn-lg btn-block btn-danger">
+          Logout
+        </a>
+      </div>
 
-        <div class="col-sm-9" style="" contenteditable="false">
-          <div class="panel panel-default">
-            <div class="panel-heading">User Requests</div>
-              <div class="panel-body">
-                <div class="row text-center">
-                  <table class="table table-striped ">
-                    <thead>
-                      <tr>
-                        <th scope="col">Description</th>
-                        <th scope="col">Weight [kg]</th>
-                        <th scope="col">X</th>
-                        <th scope="col">Y</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <% for(var i = 0; i < consignments.length; i++) { %>
-                        <% if (consignments[i].uid == user._id) { %>
-                          <tr>
-                            <td><%= consignments[i].description %></td>
-                            <td><%= consignments[i].weight %></td>
-                            <td><%= consignments[i].x %></td>
-                            <td><%= consignments[i].y %></td>
-                            <td><%= consignments[i].status %></td>
-                            <td>
-                              <a href="/user/<%= user._id %>/edit/<%= consignments[i]._id %>"
-                                class="btn btn-primary">
-                                Edit
-                              </a>
-                            </td>
-                            <td>
-                              <a href="/user/<%= user._id %>/delete/<%= consignments[i]._id %>"
-                                class="btn btn-danger">
-                                Delete
-                              </a>
-                            </td>
-                          </tr>
-                        <% } %>
+      <div class="col-sm-9" style="" contenteditable="false">
+        <div class="panel panel-default">
+          <div class="panel-heading">User Requests</div>
+            <div class="panel-body">
+              <div class="row text-center">
+                <table class="table table-striped ">
+                  <thead>
+                    <tr>
+                      <th scope="col">Description</th>
+                      <th scope="col">Weight [kg]</th>
+                      <th scope="col">X</th>
+                      <th scope="col">Y</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% for(var i = 0; i < consignments.length; i++) { %>
+                      <% if (consignments[i].uid == user._id) { %>
+                        <tr>
+                          <td><%= consignments[i].description %></td>
+                          <td><%= consignments[i].weight %></td>
+                          <td><%= consignments[i].x %></td>
+                          <td><%= consignments[i].y %></td>
+                          <td><%= consignments[i].status %></td>
+                          <td>
+                            <a href="/user/<%= user._id %>/edit/<%= consignments[i]._id %>"
+                              class="btn btn-primary">
+                              Edit
+                            </a>
+                          </td>
+                          <td>
+                            <a href="/user/<%= user._id %>/delete/<%= consignments[i]._id %>"
+                              class="btn btn-danger">
+                              Delete
+                            </a>
+                          </td>
+                        </tr>
                       <% } %>
-                    </tbody>
-                  </table>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div> <!-- panel body -->
+          </div>
+          <div>
+              <a href="/user/<%= user._id %>/add"
+                 class="btn btn-lg btn-primary">
+                New Request
+              </a>
+          </div>
+
+          <!-- Map -->
+          <section id="citymap">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12" id="map" width="100%" height="100%">
                 </div>
-              </div> <!-- panel body -->
+              </div>
             </div>
-            <div>
-              <!-- <p>You do not have any tasks, please, add the consignment!</p> -->
-              <a href="/user/<%= user._id %>/add" class="btn btn-lg btn-primary">New Request</a>
-            </div>
-          </div>
+          </section>
+
         </div>
-        <!-- <br>
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="panel panel-default">
-              <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i>
-              </div>
-              <div class="panel-body"><a href="http://facebook.com" class="">facebook.com</a>
-              </div>
-            </div>
-          </div>
-        </div> -->
+      </div>
     </div> <!-- container -->
 
     <!-- Bootstrap core JavaScript -->
@@ -143,4 +145,31 @@
     <!-- <script src="/js/agency.min.js"></script> -->
 
   </body>
+
+  <!-- Google Map -->
+  <script>
+    var map;
+    function initMap() {
+      var myLatLng = {lat: 50.057517, lng: 19.938382};
+
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 50.061769, lng: 19.939370},
+        zoom: 15
+      });
+      google.maps.event.addListener(map, 'click', function(event) {
+        placeMarker(event.latLng);
+      });
+
+      function placeMarker(location) {
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map
+        });
+      }
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjA3XDzwn8tSOxPpEWruNQfP9AFrSBXZc&callback=initMap">
+  </script>
+
 </html>
