@@ -4,16 +4,27 @@
     <meta charset="utf-8">
     <title>User page</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <!-- Custom styles for this template -->
+    <link href="/css/agency.css" rel="stylesheet">
+    <link href="/css/agency.min.css" rel="stylesheet">
   </head>
   <body>
+
     <div class="container">
       <div class="row">
         <br>
         <div class="col-sm-10">
-          <h1 class="">Hello, <%= user.name %></h1><br>
+          <h1 class="">Hello, <%= user.name %></h1>
         </div>
         <div class="col-sm-2">
-          <a href="/users" class="pull-right">
+          <a class="pull-right">
             <img title="profile image" class="img-circle img-responsive" src="/img/avatar1.png">
           </a>
         </div>
@@ -55,6 +66,9 @@
             class="btn btn-lg btn-primary btn-block">
             Edit profile
           </a>
+          <a href="/" class="btn btn-lg btn-block btn-danger">
+            Logout
+          </a>
         </div>
 
         <div class="col-sm-9" style="" contenteditable="false">
@@ -82,18 +96,21 @@
                             <td><%= consignments[i].y %></td>
                             <td><%= consignments[i].status %></td>
                             <td>
-                              <a href="/user/<%= user._id %>/edit/<%= consignments[i]._id %>" class="btn btn-primary">
+                              <a href="/user/<%= user._id %>/edit/<%= consignments[i]._id %>"
+                                class="btn btn-primary">
                                 Edit
                               </a>
                             </td>
                             <td>
-                              <a href="/user/<%= user._id %>/delete/<%= consignments[i]._id %>" class="btn btn-danger">
+                              <a href="/user/<%= user._id %>/delete/<%= consignments[i]._id %>"
+                                class="btn btn-danger">
                                 Delete
                               </a>
                             </td>
                           </tr>
                         <% } %>
                       <% } %>
+                    </tbody>
                   </table>
                 </div>
               </div> <!-- panel body -->
@@ -124,7 +141,6 @@
     <!-- <script src="/vendor/jquery-easing/jquery.easing.min.js"></script> -->
     <!-- Custom scripts for this template -->
     <!-- <script src="/js/agency.min.js"></script> -->
-
 
   </body>
 </html>

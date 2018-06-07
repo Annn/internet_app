@@ -1,11 +1,11 @@
-// consignmentRouter.js
+// mainRouter.js
 
 var express = require('express');
 var app = express();
-var consignmentRouter = express.Router();
+var mainRouter = express.Router();
 var Consignment = require('../models/Consignment');
 
-consignmentRouter.route('/').get((req, res) => {
+mainRouter.route('/').get((req, res) => {
   Consignment.find((err, consignments) => {
     if (err)
       console.log(err);
@@ -14,4 +14,4 @@ consignmentRouter.route('/').get((req, res) => {
   });
 });
 
-module.exports = consignmentRouter;
+module.exports = mainRouter;
