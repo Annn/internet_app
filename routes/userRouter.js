@@ -93,6 +93,7 @@ userRouter.route('/:uid/editUserProfile').get((req, res) => {
   res.render('editUserProfile');
 });
 
+// freight owner adds a new consignment
 userRouter.route('/:uid/add/post').post((req, res) => {
   var uid = req.params.uid;
   var consignment = new Consignment(req.body);
@@ -106,6 +107,7 @@ userRouter.route('/:uid/add/post').post((req, res) => {
              });
 });
 
+// freight owner edits the consignment parameters
 userRouter.route('/:uid/edit/:id').get((req, res) => {
   var uid = req.params.uid;
   var id = req.params.id;
@@ -135,6 +137,7 @@ userRouter.route('/:uid/update/:id').post((req, res) => {
   });
 });
 
+// freight owner deletes the consignment
 userRouter.route('/:uid/delete/:id').get((req, res) => {
   var uid = req.params.uid;
   Consignment.findByIdAndRemove({_id: req.params.id}, (err, consignment) => {
@@ -143,6 +146,30 @@ userRouter.route('/:uid/delete/:id').get((req, res) => {
     else
       res.redirect('/user/' + uid);
     });
+});
+
+// the carrier chooses the delivery route
+userRouter.route('/:uid/choose/:rid').post((req, res) => {
+  var uid = req.params.uid;
+  DeliveryRoute.findById(req.params.rid, (err, droute) => {
+    if (!droute)
+      return next(new Error('Error while obtaining the delivery route data.'));
+    else {
+      if (droute.status)
+        return next(new Error('The route is already chosen.'));
+      else {
+        droute.status = true;
+        droute.cid = uid;
+        droute.save()
+              .then(item => {
+                res.redirect('/user/' + uid);
+              })
+              .catch(err => {
+                res.status(400).send("Update error!");
+              });
+      }
+    }
+  });
 });
 
 module.exports = userRouter;

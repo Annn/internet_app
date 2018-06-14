@@ -1,4 +1,4 @@
-// request.js
+// Consignment.js
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
