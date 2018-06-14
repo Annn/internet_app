@@ -13,12 +13,8 @@ var DeliveryRouteSchema = new Schema({
         required: true,
         default: "None"
     },
-    nodes: { // the list of nodes
-        type: String,
-        required: true,
-        default: ""
-    },
-    status: { // is the route chosen by a carrier
+    consignments: [], // the list of consignments (id's) delivered in the route
+    status: { // is the route already chosen by a carrier
         type: Boolean,
         required: true,
         default: false
