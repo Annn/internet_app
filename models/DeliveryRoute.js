@@ -19,6 +19,6 @@ var DeliveryRouteSchema = new Schema({
         required: true,
         default: false
     }
-},  { collection: 'routes' });
+},  { collection: 'droutes' });
 
 module.exports = mongoose.model('DeliveryRoute', DeliveryRouteSchema);
