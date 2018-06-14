@@ -1,117 +1,110 @@
+<!-- edirUserProfile.ejs -->
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>User page</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- Font Awesome -->
-    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="/css/agency.css" rel="stylesheet">
-    <link href="/css/agency.min.css" rel="stylesheet">
-  </head>
-
-  <body>
-    <br>
-    <form>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-10">
-              <div class="panel panel-default">
-                <div class="panel-body">
-
-                  <div class="row">
-                    <div class="col-md-12 lead">
-                      <h2>Edit your profile</h2>
-                      <hr>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-3 text-center">
-                      <div id="img-preview-block"
-                           class="img-circle avatar avatar-original center-block"
-                           style="background-size:cover;
-                                  background-image:url(http://robohash.org/sitsequiquia.png?size=120x120)">
-                    </div>
-                    <span class="btn btn-link btn-file">
-                      Edit avatar
-                      <input type="file" id="upload-img">
-                    </span>
-                  </div>
-
-                  <div class="col-md-8">
-                    <div class="form-group">
-                      <label for="username">User name</label>
-                      <input type="text" class="form-control" id="user_last_name">
-                    </div>
-                    <div class="form-group">
-                      <label for="email">Email</label>
-                      <input type="text" class="form-control" id="user_first_name">
-                    </div>
-                    <div class="form-group">
-                      <label for="password">Password</label>
-                      <input type="text" class="form-control" id="password">
-                    </div>
-                    <div class="form-group">
-                      <label for="password">Confirm password</label>
-                      <input type="text" class="form-control" id="password">
-                    </div>
-                    <div class="radio">
-                      <label class="radio-inline">
-                        <input type="radio" value="cargoowner" checked="checked"
-                               name="cargoowner" id="user_typr">
-                               Cargo owner
-                      </label>
-                      <label class="radio-inline">
-                        <input type="radio" value="carrier" name="carrier" id="user_type">
-                        Carrier
-                      </label>
-                    </div>
-                    <button type="button" class="btn btn-danger"
-                          data-toggle="modal" data-target="#delete-user-modal">
-                          Delete user
-                    </button>
-                  </div>
-
-                </div>
-
+  <% include ./partials/head %>
+    <body>
+        <br>
+        <form>
+            <div class="container">
                 <div class="row">
-                  <div class="btn-toolbar col-md-12">
-                    <hr>
-                    <a href="#" class="btn btn-primary pull-right">
-                    <!-- <i class="glyphicon glyphicon-floppy-disk aria-hidden=true"></i>-->
-                      Save Changes
-                    </a>
-                    <a href="#" class="btn btn-default pull-right">
-                      Cancel
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                    <div class="col-md-10">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 lead">
+                                        <h2>Edit your profile</h2>
+                                        <hr>
+                                    </div>
+                                </div>
 
-      <div id="delete-user-modal" class="modal fade">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-body">
-              <p>Are you sure you want to delete account?</p>
+                                <div class="row">
+                                    <div class="col-md-3 text-center">
+<!--                                        <div class="col-lg-4 pull-lg-8 text-xs-center">-->
+                                        <img src="//placehold.it/150" class="img-circle avatar avatar-original center-block" alt="avatar" />
+                                        <h6 class="m-t-2">Upload a different photo</h6>
+                                        <label class="custom-file">
+                                        <input type="file" id="file" class="custom-file-input">
+<!--                                    <span class="custom-file-control">Choose file</span>-->
+                                        </label>
+<!--        </div>-->
+<!--                                <div id="img-preview block"
+                                           class="img-circle avatar avatar-original center-block"
+                                           style="background-size:cover;
+                                                  background-image:url(http://robohash.org/sitsequiquia.png?size=120x120)">
+<!--                                        </div>-->
+                                        <span class="btn btn-link btn-file"><input type="file" id="upload-img">
+                                        </span>
+                                    </div>
+
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="username">User name</label>
+                                        <input type="text" class="form-control" id="user_last_name">
+                                    </div>
+                                    <div class="form-group">
+                                          <label for="email">Email</label>
+                                          <input type="text" class="form-control" id="user_first_name">
+                                    </div>
+                                    <div class="form-group">
+                                          <label for="password">Password</label>
+                                          <input type="text" class="form-control" id="password">
+                                    </div>
+                                    <div class="form-group">
+                                          <label for="password">Confirm password</label>
+                                          <input type="text" class="form-control" id="password">
+                                    </div>
+                                    <div class="radio">
+                                        <label class="radio-inline">
+                                            <input type="radio" value="cargoowner" checked="checked"
+                                               name="cargoowner" id="user_typr">
+                                               Cargo owner
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" value="carrier" name="carrier" id="user_type">
+                                        Carrier
+                                        </label>
+                                    </div>
+                                    <button type="button" class="btn btn-danger"
+                                          data-toggle="modal" data-target="#delete-user-modal">
+                                          Delete user
+                                    </button>
+                                </div>
+
+                                </div>
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a href="#" class="btn btn-primary pull-right">Save</a>
+                                        <a href="#" class="btn btn-default pull-right">Cancel</a>
+                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">
-                Cancel
-              </button>
-              <button type="button" class="btn btn-danger">
-                Delete
-              </button>
-            </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
-    </form>
+
+          <div id="delete-user-modal" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <p>Are you sure you want to delete account?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Cancel
+                  </button>
+                  <button type="button" class="btn btn-danger">
+                    Delete
+                  </button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+        </form>
 
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script>

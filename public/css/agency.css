@@ -699,13 +699,35 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     position: relative;
 }
 
-#citymap {
-    
+#usercontent {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    box-sizing: border-box;
+/*    border: 1px solid rgba(0,0,0,0.1);*/
 }
 
-img.avatar,
-div.avatar {
-  border: 1px solid #eee;
-  width: 122px;
-  height: 122px;
+.img-profile {
+    max-width: 10rem;
+    max-height: 10rem;
+    align-content: center;
+}
+.btn-default {
+    background-color: #fff;
+    border-color: #ccc;
+    margin-right: 10px;
+}
+.btn-default:hover {
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+.panel-default {
+    border-color: #ddd;
+}
+.panel-body {
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    border-color: #ddd;
 }
