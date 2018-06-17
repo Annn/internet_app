@@ -15,9 +15,6 @@ const User = require('../models/User'),
 
 const passport = require('passport');
 
-//Consignment = require('../models/Consignment'),
-//DeliveryRoute = require('../models/DeliveryRoute');
-
 userRouter.route('/register').get((req, res) => {
   res.render('register');
 });
