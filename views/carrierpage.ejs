@@ -1,0 +1,162 @@
+<!-- carrierpage.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <% include ./partials/head %>
+
+  <body id="page-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/">Cargo Bikes</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Page Content -->
+    <div class="container" id="usercontent">
+      <div class="row">
+        <!--left col-->
+        <div class="col-md-3 col-lg-3">
+          <h4 class="my-4"><%= user.username %>'s profile</h4>
+          <a class="">
+            <img title="profile image" class=" img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/avatar1.png">
+          </a>
+          <ul class="list-group">
+            <li class="list-group-item text-right">
+              <span class="pull-left">
+                <strong class="">User Name:</strong>
+              </span>
+              <%= user.username %>
+            </li>
+            <li class="list-group-item text-right">
+              <span class="pull-left">
+                <strong class="">Email:</strong>
+              </span>
+              <%= user.email %>
+            </li>
+            <li class="list-group-item text-right">
+              <span class="pull-left">
+                <strong class="">Role:</strong>
+              </span>
+              <%= user.type %>
+            </li>
+            <li class="list-group-item text-right">
+              <span class="pull-left">
+                <strong class="">
+                  Joined:
+                </strong>
+              </span>
+              <%= user.dateJoined %>
+            </li>
+          </ul>
+          <br>
+          <a href="/user/<%= user._id %>/editUserProfile"
+             class="btn btn-lg btn-primary btn-block">
+             Edit profile
+          </a>
+          <a href="/" class="btn btn-lg btn-block btn-danger">
+            Logout
+          </a>
+        </div> <!-- /.col-lg-3 -->
+
+        <div class="col-md-9 col-lg-9" contenteditable="false">
+          <h4 class="my-4">Possible delivery routes</h4>
+          <% for (var i = 0; i < droutes.length; i++) { %>
+            <div class="table-responsive">
+              <p></p>
+              <h5>Route #<%= i + 1 %></h5>
+              <table class="table table-striped table-responsive">
+                <thead>
+                  <tr>
+                    <th scope="col">Description</th>
+                    <th scope="col">Weight [kg]</th>
+                    <th scope="col">Latitude</th>
+                    <th scope="col">Longitude</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for (var j = 0; j < droutes[i].consignments.length; j++) { %>
+                    <% for (var c of consignments) { %>
+                      <% if (c._id == droutes[i].consignments[j]) { %>
+                        <tr>
+                          <td><%= c.description %></td>
+                          <td class="weight"><%= c.weight %></td>
+                          <td class="lat"><%= c.lat %></td>
+                          <td class="lng"><%= c.lng %></td>
+                        </tr>
+                        <% break; %>
+                      <% } %>
+                    <% } %>
+                  <% } %>
+                </tbody>
+              </table>
+
+              <a href="/user/<%= user._id %>/choose/<%= droutes[i]._id %>"
+                class="btn btn-primary">
+                Get Route
+              </a>
+              <p></p>
+            </div> <!-- table-responsive -->
+          <% } %>
+
+          <p></p>
+          <h4>See your requests on map</h4>
+          <!-- Map -->
+          <div class="" id="map" width="100%" height="100%"></div>
+        </div> <!-- col-lg-9 -->
+      </div>
+    </div> <!-- container -->
+  </body>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Plugin JavaScript -->
+  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Contact form JavaScript -->
+  <script src="/js/jqBootstrapValidation.js"></script>
+  <script src="/js/contact_me.js"></script>
+  <!-- Custom scripts for this template -->
+  <script src="/js/agency.min.js"></script>
+  <!-- Google Map -->
+  <script>
+    var map;
+    var latTD = $(".lat"), lngTD = $(".lng"), wTD = $(".weight");
+    var ms = [];
+
+    for (var i = 0; i < latTD.length; i++) {
+      ms.push({ lat: parseFloat(latTD[i].innerText),
+                lng: parseFloat(lngTD[i].innerText),
+                weight: wTD[i].innerText + " kg"});
+    }
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 50.061769, lng: 19.939370},
+        zoom: 15
+        });
+      //
+      for (var i = 0; i < ms.length; i++) {
+        new google.maps.Marker({
+          position: {lat: ms[i].lat, lng: ms[i].lng},
+          map: map,
+          title: ms[i].weight
+        });
+      }
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjA3XDzwn8tSOxPpEWruNQfP9AFrSBXZc&callback=initMap">
+  </script>
+
+</html>
