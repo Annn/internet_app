@@ -9,10 +9,13 @@ var mainRouter = require('./routes/mainRouter');
 var userRouter = require('./routes/userRouter');
 
 var mongoose = require('mongoose');
+//const keys = require('./config/keys');
 var bodyParser = require('body-parser');
 
+const passportSetup = require('./config/passport-setup');
+
 mongoose.Promise = require('bluebird');
-//mongodb://<dbuser>:<dbpassword>@ds219040.mlab.com:19040/cbp
+// mongoose.connect(keys.mongodb.dbURI)
 mongoose.connect('mongodb://user:user@ds219040.mlab.com:19040/cbp')
   .then(() => {
     console.log('Database connection established!');

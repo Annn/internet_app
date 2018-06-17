@@ -23,8 +23,8 @@ const UserSchema = new Schema({
     trim: true
   },
   type: {
-    type: String,
-    required: true
+    type: String //,    UNCOMMENT
+//    required: true
   },
   password: {
     type: String,
@@ -33,7 +33,11 @@ const UserSchema = new Schema({
   dateJoined: {
     type: Date,
     default: Date.now
-  }
+  },
+    avatarImg: {
+        type: String,
+    }
+    
 }, { collection: 'users' });
 
 // UserSchema.statics.authenticate = function (email, password, callback) {

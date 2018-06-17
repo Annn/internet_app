@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 const userRouter = express.Router();
 const User = require('../models/User'),
       Consignment = require('../models/Consignment');
+const passport = require('passport');
 
 userRouter.route('/register').get((req, res) => {
   res.render('register');
@@ -15,6 +16,33 @@ userRouter.route('/register').get((req, res) => {
 userRouter.route('/login').get((req, res) => {
   res.render('login');
 });
+
+// register with google strategy
+userRouter.route('/google').get(passport.authenticate('google', {
+    scope: ['profile']
+}));
+
+
+userRouter.route('/google/redirect').get(passport.authenticate('google'), (req, res) => {
+    res.send('user logged in with google ');
+//    User.find((err, users) => {
+//    if (err)
+//        console.log("Error while loading users data.", err);
+//    else {
+//        res.redirect('/user/' + users[0]._id);
+//    }
+//    });
+});
+
+
+// callback route for google to redirect to
+//userRouter.route('/google/redirect').get(passport.authenticate('google'), (req, res) => {
+//    res.send('user logged in with google ');
+//    res.send('user logged in with google ' + req.User.username);
+//    res.redirect('/user/' + req.profile._id);
+//    res.send(req.User);
+//});
+
 
 userRouter.route('/:id').get((req, res) => {
   var id = req.params.id;
