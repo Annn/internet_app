@@ -9,7 +9,7 @@ var mainRouter = require('./routes/mainRouter');
 var userRouter = require('./routes/userRouter');
 
 var mongoose = require('mongoose');
-//const keys = require('./config/keys');
+const keys = require('./config/keys');
 var bodyParser = require('body-parser');
 
 const passportSetup = require('./config/passport-setup');

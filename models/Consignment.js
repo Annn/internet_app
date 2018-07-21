@@ -11,14 +11,15 @@ var ConsignmentSchema = new Schema({
     uid: {
         type: String,
         required: true,
-        default: 0
+        default: '5b1115d536d0db74bc25e1e8'
     },
     description: {
         type: String,
         required: true
     },
     weight: {
-        type: Number
+        type: Number,
+        default: 0
     },
     lat: {
         type: Number,
